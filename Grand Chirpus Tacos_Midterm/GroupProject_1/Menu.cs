@@ -10,7 +10,6 @@ namespace GroupProject_1
         public string Name { get; set; }
         public string Category { get; set; }
         public string Description { get; set; }
-
         public string Price { get; set; }
 
         public Menu(string name, string category, string description, string price)
@@ -23,11 +22,9 @@ namespace GroupProject_1
 
         public static void CreateMenu()
         {
-
             string line;
             var menuList = new List<Menu>();
 
-            // Read the file and display it line by line.
             System.IO.StreamReader file =
                 new System.IO.StreamReader(@"C:\Users\jarellano\Desktop\productlist.txt");
             while ((line = file.ReadLine()) != null)
@@ -38,14 +35,40 @@ namespace GroupProject_1
 
             file.Close();
 
+            Console.WriteLine("Drinks:");
             foreach (var item in menuList)
             {
-                Console.WriteLine($"{item.Name} {item.Category} {item.Description} {item.Price}");
+                if(item.Category == "drink")
+                Console.WriteLine($"{item.Name} {item.Description} {item.Price}");
             }
+            Console.WriteLine();
 
-            Console.WriteLine($"{menuList[2].Description}");
+            Console.WriteLine("Tacos:");
+            foreach (var item in menuList)
+            {
+                if (item.Category == "taco")
+                    Console.WriteLine($"{item.Name} {item.Description} {item.Price}");
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("Sides:");
+            foreach (var item in menuList)
+            {
+                if (item.Category == "side")
+                    Console.WriteLine($"{item.Name} {item.Description} {item.Price}");
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("Desserts:");
+            foreach (var item in menuList)
+            {
+                if (item.Category == "dessert")
+                    Console.WriteLine($"{item.Name} {item.Description} {item.Price}");
+            }
+            Console.WriteLine();
+
+            //Console.WriteLine($"{menuList[2].Description}");
             Console.ReadKey();
-
         }
     }
 }
