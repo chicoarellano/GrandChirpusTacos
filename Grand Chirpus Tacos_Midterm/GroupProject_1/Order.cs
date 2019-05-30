@@ -48,6 +48,7 @@ namespace GroupProject_1
                     Console.Clear();
                     Console.WriteLine("Invalid entry!");
                     Console.WriteLine();
+                    //fix that it doesn't show menu
                     Console.Write($"Enter the item #(1-12) that you want to order: ");
                     itemSelectionString = Console.ReadLine();
                 }
@@ -132,7 +133,7 @@ namespace GroupProject_1
 
             Console.WriteLine($"Subtotal: {String.Format("{0:C2}", subTotal)} \nSales tax: {String.Format("{0:C2}", salesTax)} \nGrand total: {String.Format("{0:C2}", grandTotal)}");
             Console.WriteLine();
-            Console.Write("How are you paying? Enter \"1\" for Cash, \"2\" for Check or \"3\" for Credit: ");
+            Console.Write("How are you paying? Enter \"1\" for Cash, \"2\" for Credit or \"3\" for Check: ");
             var paymentMethodString = Console.ReadLine();
             int paymentMethod;
 
@@ -189,6 +190,7 @@ namespace GroupProject_1
             else if (paymentMethod == 2)
             {
                 //run credit function
+                var creditString = Credit.TakeTheCreditCard();
 
                 // configure receipt here
                 Console.Write("Item");
@@ -220,12 +222,14 @@ namespace GroupProject_1
 
                 //reciept
 
-                Console.WriteLine("Credit class string output goes here");
+                Console.WriteLine(creditString);
             }
 
             else
             {
+                Console.Clear();
                 //run check function
+                var checkString = Check.GetCheckNumber();
 
                 // configure receipt here
                 Console.Write("Item");
@@ -257,7 +261,7 @@ namespace GroupProject_1
 
                 //reciept
 
-                Console.WriteLine("Check class string output goes here");
+                Console.WriteLine(checkString);
             }
 
             Console.WriteLine();
