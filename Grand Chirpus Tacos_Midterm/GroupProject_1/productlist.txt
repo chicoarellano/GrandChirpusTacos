@@ -1,0 +1,13 @@
+﻿Item Number,Item Name,Category,Description,Price
+1,Asada,taco,steak,3.00
+2,Al Pastor,taco,pork,3.00
+3,Tinga,taco,chicken,3.00
+4,Elote,side,corn on the cobb,2.00
+5,Frijoles,side,refried beans,2.00
+6,Arroz,side,rice,2.00
+7,Jarritos,drink,mexican soda,2.00
+8,Horchata,drink,milky rice drink,2.00
+9,Agua Fresca,drink,fruit drink,2.00
+10,Flan,dessert,caramel dessert,3.00
+11,Churros,dessert,donut stick,3.00
+12,Tres Leches,dessert,sponge cake,3.00

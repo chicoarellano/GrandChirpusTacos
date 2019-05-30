@@ -4,23 +4,26 @@ using System.Text;
 
 namespace GroupProject_1
 {
-    class Cash
+    public class Cash
     {
-        public decimal AmountGiven { get; set; }
-        public decimal Cost { get; set; }
+        public double Cost { get; set; }
 
-        public decimal AmountReturned;
+        public double AmountReturned;
 
-        public Cash(decimal amountGiven, decimal cost)
+        //public Cash(double amountGiven, double cost)
+        //{
+        //    AmountGiven = amountGiven;
+        //    Cost = cost;
+        //}
+
+        public void CashBack(double Cost)
         {
-            AmountGiven = amountGiven;
-            Cost = cost;
-        }
+            Console.WriteLine("How much cash is given?");
+            var userInput = Console.ReadLine();
+            double.TryParse(userInput, out double amountGiven);
 
-        public decimal CashBack()
-        {
-            AmountReturned = AmountGiven - Cost;
-            return AmountReturned;
+            AmountReturned = amountGiven - Cost;
+            Console.WriteLine(AmountReturned);
         }
     }
 }
