@@ -39,30 +39,47 @@ namespace GroupProject_1
 
             do
             {
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Write($"Enter the item #(1-12) that you want to order: ");
+
+                Console.ResetColor();
                 var itemSelectionString = Console.ReadLine();
                 int itemSelection;
 
                 while (!int.TryParse(itemSelectionString, out itemSelection) || itemSelection < 1 || itemSelection > 12)
                 {
                     Console.Clear();
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Invalid entry!");
                     Console.WriteLine();
                     //fix that it doesn't show menu
+
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Write($"Enter the item #(1-12) that you want to order: ");
                     itemSelectionString = Console.ReadLine();
                 }
 
                 Console.Clear();
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Write($"How many {menuList[itemSelection].Name} would you like?: ");
+                Console.ResetColor();
                 var orderQtyString = Console.ReadLine();
                 int orderQty;
 
                 while (!int.TryParse(orderQtyString, out orderQty) || orderQty < 1)
                 {
                     Console.Clear();
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Invalid entry!");
+                    
                     Console.WriteLine();
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Write($"Enter the number of {menuList[itemSelection].Name} you would like to order: ");
                     orderQtyString = Console.ReadLine();
                 }
@@ -70,14 +87,22 @@ namespace GroupProject_1
                 orderList.Add(new Order(menuList[itemSelection].Name, orderQty, (orderQty * (Decimal.Parse(menuList[itemSelection].Price)))));
 
                 Console.Clear();
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+
                 Console.WriteLine($"{orderList[orderCounter].ItemName} X {orderList[orderCounter].Qty} = {String.Format("{0:C2}", orderList[orderCounter].LinePrice)}\n");
+
+                Console.ResetColor();
 
                 orderCounter++;
 
                 while (true)
                 {
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("Would you like something else? (y)es or (n)o: ");
                     userContinues = Console.ReadLine();
+                    Console.ResetColor();
                     Console.Clear();
                     if (userContinues.Equals("y", StringComparison.OrdinalIgnoreCase) || userContinues.Equals("yes", StringComparison.OrdinalIgnoreCase))
                     {
@@ -99,6 +124,8 @@ namespace GroupProject_1
                             }
                             else
                             {
+                                Console.BackgroundColor = ConsoleColor.DarkRed;
+                                Console.ForegroundColor = ConsoleColor.White;
                                 Console.WriteLine("Invalid Entry. Please try again.");
                                 Console.WriteLine();
                             }
@@ -113,12 +140,17 @@ namespace GroupProject_1
                     }
                     else
                     {
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Invalid Entry. Please try again.");
                         Console.WriteLine();
                     }
                 }
 
             } while (loopforItemEntry);
+
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Yellow;
 
             decimal subTotal = 0;
 
@@ -130,27 +162,42 @@ namespace GroupProject_1
             decimal salesTax = subTotal * .06m;
             decimal grandTotal = subTotal + salesTax;
 
-
             Console.WriteLine($"Subtotal: {String.Format("{0:C2}", subTotal)} \nSales tax: {String.Format("{0:C2}", salesTax)} \nGrand total: {String.Format("{0:C2}", grandTotal)}");
+
             Console.WriteLine();
+
+
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write("How are you paying? Enter \"1\" for Cash, \"2\" for Credit or \"3\" for Check: ");
+            Console.ResetColor();
+
+
             var paymentMethodString = Console.ReadLine();
             int paymentMethod;
 
             while (!int.TryParse(paymentMethodString, out paymentMethod) || paymentMethod < 1 || paymentMethod > 3)
             {
                 Console.Clear();
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Invalid entry!");
                 Console.WriteLine();
+
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("How are you paying? Enter \"1\" for Cash, \"2\" for Credit or \"3\" for Check: ");
                 paymentMethodString = Console.ReadLine();
             }
 
             Console.Clear();
 
+
             if (paymentMethod == 1)
             {
 
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 //run cash function
                 var cashBackString = Cash.CashBack(grandTotal);
 
@@ -185,10 +232,13 @@ namespace GroupProject_1
                 //reciept
 
                 Console.WriteLine(cashBackString);
+                Console.ResetColor();
             }
 
             else if (paymentMethod == 2)
             {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 //run credit function
                 var creditString = Credit.TakeTheCreditCard();
 
@@ -223,11 +273,14 @@ namespace GroupProject_1
                 //reciept
 
                 Console.WriteLine(creditString);
+                Console.ResetColor();
             }
 
             else
             {
                 Console.Clear();
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 //run check function
                 var checkString = Check.GetCheckNumber();
 
@@ -262,10 +315,14 @@ namespace GroupProject_1
                 //reciept
 
                 Console.WriteLine(checkString);
+                Console.ResetColor();
             }
 
             Console.WriteLine();
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("Thank you!");
+            Console.ResetColor();
             Console.ReadKey();
         }
     }
