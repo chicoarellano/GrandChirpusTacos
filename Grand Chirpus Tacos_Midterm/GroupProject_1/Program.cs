@@ -19,11 +19,18 @@ namespace GroupProject_1
 
                 while (!(userInput1.Equals("y") || userInput1.Equals("yes") || userInput1.Equals("n") || userInput1.Equals("no")))
                 {
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.White;
+
                     Console.WriteLine("Invalid entry!");
                     Console.WriteLine();
+
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Would you like to place an order?");
                     Console.Write("Please enter (y)es or (n)o: ");
                     userInput1 = Console.ReadLine().ToLower();
+                    Console.ResetColor();
                     Console.Clear();
                 }
 
@@ -42,9 +49,16 @@ namespace GroupProject_1
 
                 while (!(newCustomer.Equals("y") || newCustomer.Equals("yes") || newCustomer.Equals("n") || newCustomer.Equals("no")))
                 {
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Invalid entry!");
                     Console.WriteLine();
+
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("Please enter (y)es or (n)o: ");
+                    Console.ResetColor();
+
                     newCustomer = Console.ReadLine().ToLower();
                     Console.Clear();
                 }
@@ -59,5 +73,6 @@ namespace GroupProject_1
             Console.WriteLine("OK, closing time. Goodbye!");
             Console.ReadKey();
         }
+
     }
 }

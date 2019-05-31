@@ -16,9 +16,15 @@ namespace GroupProject_1
             while (!(Regex.IsMatch(checkNumber, @"^[0-9]{3,4}$")))
             {
                 Console.Clear();
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Thats an invalid number.");
+
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("Please enter your check number: ");
                 checkNumber = Console.ReadLine();
+                Console.ResetColor();
             }
             Console.Clear();
             
