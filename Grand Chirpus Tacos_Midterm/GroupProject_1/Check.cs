@@ -9,9 +9,11 @@ namespace GroupProject_1
     {        
         public static string GetCheckNumber()
         {
-            
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Please enter your check number: ");
             var checkNumber = Console.ReadLine();
+            Console.ResetColor();
 
             while (!(Regex.IsMatch(checkNumber, @"^[0-9]{3,4}$")))
             {
@@ -19,8 +21,8 @@ namespace GroupProject_1
                 Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Thats an invalid number.");
-
-                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine();
+                Console.BackgroundColor = ConsoleColor.Blue;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("Please enter your check number: ");
                 checkNumber = Console.ReadLine();
