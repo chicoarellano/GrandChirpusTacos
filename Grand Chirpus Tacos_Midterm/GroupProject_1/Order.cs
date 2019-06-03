@@ -105,65 +105,75 @@ namespace GroupProject_1
 
                 Console.WriteLine($"{orderList[orderCounter].ItemName} X {orderList[orderCounter].Qty} = {String.Format("{0:C2}", orderList[orderCounter].LinePrice)}\n");                
 
-                orderCounter++;
 
-                while (true)
+                Console.WriteLine("Would you like to order something else?");
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("Enter (y)es or (n)o: ");
+                userContinues = Console.ReadLine().ToLower();
+                Console.ResetColor();
+                Console.Clear();
+
+                while (!(userContinues.Equals("y") || userContinues.Equals("yes") || userContinues.Equals("n") || userContinues.Equals("no")))
                 {
-                    Console.WriteLine("Would you like something else?");
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Invalid entry!");                    
+                    Console.ResetColor();
+                    Console.WriteLine();                    
+                    Console.WriteLine("Would you like to order something else?");
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("Please enter (y)es or (n)o: ");
+                    userContinues = Console.ReadLine().ToLower();
+                    Console.ResetColor();
+                    Console.Clear();
+                }
+
+                if (userContinues.Equals("y") || userContinues.Equals("yes"))
+                {
+                    Console.WriteLine("Would you like to see the menu again?");
                     Console.BackgroundColor = ConsoleColor.Blue;
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("Enter (y)es or (n)o: ");
-                    userContinues = Console.ReadLine();
+                    var redisplayMenu = Console.ReadLine();
                     Console.ResetColor();
                     Console.Clear();
-                    if (userContinues.Equals("y", StringComparison.OrdinalIgnoreCase) || userContinues.Equals("yes", StringComparison.OrdinalIgnoreCase))
-                    {
-                        do
-                        {
-                            Console.WriteLine("Would you like to see the menu again?");
-                            Console.BackgroundColor = ConsoleColor.Blue;
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.Write("Enter (y)es or (n)o: ");
-                            var redisplayMenu = Console.ReadLine();
-                            Console.ResetColor();
-                            Console.Clear();
-                            if (redisplayMenu.Equals("y", StringComparison.OrdinalIgnoreCase) || redisplayMenu.Equals("yes", StringComparison.OrdinalIgnoreCase))
-                            {
-                                Console.Clear();
-                                Menu.CreateMenu();
-                                break;
-                            }
-                            else if (redisplayMenu.Equals("n", StringComparison.OrdinalIgnoreCase) || redisplayMenu.Equals("no", StringComparison.OrdinalIgnoreCase))
-                            {
-                                Console.Clear();
-                                break;
-                            }
-                            else
-                            {
-                                Console.BackgroundColor = ConsoleColor.DarkRed;
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine("Invalid Entry. Please try again.");
-                                Console.WriteLine();
-                                Console.ResetColor();
-                            }
-                        } while (true);
 
-                        break;
-                    }
-                    else if (userContinues.Equals("n", StringComparison.OrdinalIgnoreCase) || userContinues.Equals("no", StringComparison.OrdinalIgnoreCase))
-                    {
-                        loopforItemEntry = false;
-                        break;
-                    }
-                    else
+                    while (!(redisplayMenu.Equals("y") || redisplayMenu.Equals("yes") || redisplayMenu.Equals("n") || redisplayMenu.Equals("no")))
                     {
                         Console.BackgroundColor = ConsoleColor.DarkRed;
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("Invalid Entry. Please try again.");
+                        Console.WriteLine("Invalid entry!");
                         Console.WriteLine();
                         Console.ResetColor();
+                        Console.WriteLine("Would you like to see the menu again?");
+                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write("Enter (y)es or (n)o: ");
+                        redisplayMenu = Console.ReadLine();
+                        Console.ResetColor();
+                        Console.Clear();
+                    }
+
+                    if (redisplayMenu.Equals("y") || redisplayMenu.Equals("yes"))
+                    {
+                        Console.Clear();
+                        Menu.CreateMenu();
+                    }
+
+                    else
+                    {
+                        Console.Clear();
                     }
                 }
+
+                else
+                {
+                    loopforItemEntry = false;
+                }
+
+                orderCounter++;               
 
 
             } while (loopforItemEntry);            
@@ -290,8 +300,6 @@ namespace GroupProject_1
 
             else if (paymentMethod == 2)
             {
-                //Console.BackgroundColor = ConsoleColor.White;
-                //Console.ForegroundColor = ConsoleColor.DarkGray;
                 //run credit function
                 var creditString = Credit.TakeTheCreditCard();
 
@@ -331,9 +339,6 @@ namespace GroupProject_1
 
             else
             {
-                Console.Clear();
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.DarkGray;
                 //run check function
                 var checkString = Check.GetCheckNumber();
 

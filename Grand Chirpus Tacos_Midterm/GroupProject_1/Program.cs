@@ -61,8 +61,10 @@ namespace GroupProject_1
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Invalid entry!");
                     Console.WriteLine();
-
-                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.ResetColor();
+                    Console.WriteLine("Are there any more customers?");
+                    Console.WriteLine();
+                    Console.BackgroundColor = ConsoleColor.Blue;
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("Please enter (y)es or (n)o: ");
                     newCustomer = Console.ReadLine().ToLower();
